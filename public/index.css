@@ -25,16 +25,20 @@ button:hover {
     text-align: center;
 }
 
-#left-stick-buttons {
+#left-stick {
+    width: 120px;
+    height: 120px;
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 35px;
+    top: 35px;
 }
 
-#right-stick-buttons {
+#right-stick {
+    width: 120px;
+    height: 120px;
     position: absolute;
-    right: 10px;
-    top: 190px;
+    right: 35px;
+    top: 180px;
 }
 
 .large-square {
