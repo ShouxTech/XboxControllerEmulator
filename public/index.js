@@ -19,6 +19,19 @@ const rightStickRight = document.getElementById('right-stick-right');
 const rightStickUp = document.getElementById('right-stick-up');
 const rightStickDown = document.getElementById('right-stick-down');
 
+const THUMBSTICK_SETTINGS = {
+    internalFillColor: 'rgb(255, 255, 255)',
+    internalLineWidth: 2,
+    internalStrokeColor: 'rgb(200, 200, 200)',
+    externalLineWidth: 2,
+    externalStrokeColor: 'rgb(255, 255, 255)',
+    autoReturnToCenter: true
+};
+
+const leftStick = new JoyStick('left-stick', THUMBSTICK_SETTINGS);
+const rightStick = new JoyStick('right-stick', THUMBSTICK_SETTINGS);
+console.log(leftStick);
+
 function registerMouseEvents(button, onPress, onRelease) {
     button.onmousedown = onPress;
     button.onmouseup = onRelease;
@@ -38,17 +51,6 @@ function registerLetterButton(button, letter) {
     }
     function onRelease() {
         fetch(`/release/letter/${letter}`);
-    }
-
-    registerMouseEvents(button, onPress, onRelease);
-}
-
-function registerStickButton(button, side, direction) {
-    function onPress() {
-        fetch(`/press/stick/${side}/${direction}`);
-    }
-    function onRelease() {
-        fetch(`/release/stick/${side}/${direction}`);
     }
 
     registerMouseEvents(button, onPress, onRelease);
@@ -81,18 +83,22 @@ registerLetterButton(bButton, 'b');
 registerLetterButton(xButton, 'x');
 registerLetterButton(yButton, 'y');
 
-registerStickButton(leftStickLeft, 'left', 'left');
-registerStickButton(leftStickRight, 'left', 'right');
-registerStickButton(leftStickUp, 'left', 'up');
-registerStickButton(leftStickDown, 'left', 'down');
-
-registerStickButton(rightStickLeft, 'right', 'left');
-registerStickButton(rightStickRight, 'right', 'right');
-registerStickButton(rightStickUp, 'right', 'up');
-registerStickButton(rightStickDown, 'right', 'down');
-
 registerBumperButton(leftBumper, 'left');
 registerBumperButton(rightBumper, 'right');
 
 registerTriggerButton(leftTrigger, 'left');
 registerTriggerButton(rightTrigger, 'right');
+
+setInterval(() => {
+    {
+        const floatX = leftStick.GetX() / 100;
+        const floatY = leftStick.GetY() / 100;
+        fetch(`/move/stick/left/${floatX}/${floatY}`);
+    }
+
+    {
+        const floatX = rightStick.GetX() / 100;
+        const floatY = rightStick.GetY() / 100;
+        fetch(`/move/stick/right/${floatX}/${floatY}`);
+    }
+}, 20);
