@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(25, 25, 25);
+    color: white;
+    padding: 10px;
+}
+
+button {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+#letter-buttons {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#front-buttons {
+    text-align: center;
+}
+
+#left-stick-buttons {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#right-stick-buttons {
+    position: absolute;
+    right: 10px;
+    top: 190px;
+}
+
+.large-square {
+    width: 50px;
+    height: 50px;
+}
