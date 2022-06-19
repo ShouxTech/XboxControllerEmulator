@@ -37,20 +37,10 @@ def releaseLetterButton(button):
     gamepad.update()
     return '200'
 
-@app.route('/press/stick/<side>/<direction>')
-def pressStickButton(side, direction):
-    xDirectionFloat = getFloatFromHorizontalDirection(direction)
-    yDirectionFloat = getFloatFromVerticalDirection(direction)
-    
+@app.route('/move/stick/<side>/<x>/<y>')
+def moveStick(side, x, y):
     func = getattr(gamepad, side.lower() + '_joystick_float')
-    func(xDirectionFloat, yDirectionFloat)
-    gamepad.update()
-    return '200'
-
-@app.route('/release/stick/<side>/<direction>')
-def releaseStickButton(side, direction):
-    func = getattr(gamepad, side.lower() + '_joystick_float')
-    func(0, 0)
+    func(float(x), float(y))
     gamepad.update()
     return '200'
 
