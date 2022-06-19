@@ -7,7 +7,7 @@ Demonstration video: [https://www.youtube.com/watch?v=dWrYsfU78Cs](https://www.y
 Note: Some controls are missing, such as a dpad, and buttons for emulating when you press down on a thumbstick.  
 
 ## How to use
-Install python with pip.  
+Install [Python](https://www.python.org/) with pip.  
 
 Run `pip install vgamepad` in a terminal.  
  
