@@ -70,5 +70,29 @@ def releaseTriggerButton(side):
     gamepad.update()
     return '200'
 
+@app.route('/press/select')
+def pressSelectButton():
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK)
+    gamepad.update()
+    return '200'
+    
+@app.route('/release/select')
+def releaseSelectButton():
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK)
+    gamepad.update()
+    return '200'
+
+@app.route('/press/start')
+def pressStartButton():
+    gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
+    gamepad.update()
+    return '200'
+    
+@app.route('/release/start')
+def releaseStartButton():
+    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
+    gamepad.update()
+    return '200'
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000)
