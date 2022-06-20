@@ -19,6 +19,9 @@ const rightStickRight = document.getElementById('right-stick-right');
 const rightStickUp = document.getElementById('right-stick-up');
 const rightStickDown = document.getElementById('right-stick-down');
 
+const selectButton = document.getElementById('select-button');
+const startButton = document.getElementById('start-button');
+
 const THUMBSTICK_SETTINGS = {
     internalFillColor: 'rgb(255, 255, 255)',
     internalLineWidth: 2,
@@ -78,6 +81,28 @@ function registerTriggerButton(button, side) {
     registerMouseEvents(button, onPress, onRelease);
 }
 
+function registerSelectButton(button) {
+    function onPress() {
+        fetch('/press/select');
+    }
+    function onRelease() {
+        fetch('/release/select');
+    }
+
+    registerMouseEvents(button, onPress, onRelease);
+}
+
+function registerStartButton(button) {
+    function onPress() {
+        fetch('/press/start');
+    }
+    function onRelease() {
+        fetch('/release/start');
+    }
+
+    registerMouseEvents(button, onPress, onRelease);
+}
+
 registerLetterButton(aButton, 'a');
 registerLetterButton(bButton, 'b');
 registerLetterButton(xButton, 'x');
@@ -88,6 +113,9 @@ registerBumperButton(rightBumper, 'right');
 
 registerTriggerButton(leftTrigger, 'left');
 registerTriggerButton(rightTrigger, 'right');
+
+registerSelectButton(selectButton);
+registerStartButton(startButton);
 
 setInterval(() => {
     {
