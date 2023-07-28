@@ -8,7 +8,7 @@ Note: Some controls are missing, such as a dpad, and buttons for emulating when 
 ## How to use
 Install [Python](https://www.python.org/) with pip.  
 
-Run the following in a terminal:\
+Run the following in a terminal:
 ```
 pip install vgamepad
 pip install flask
